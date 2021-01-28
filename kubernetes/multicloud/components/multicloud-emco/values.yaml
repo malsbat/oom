@@ -23,7 +23,10 @@ mongo:
   persistence:
     mountSubPath: emco/mongo/data
     enabled: true
+    accessMode: ReadWriteMany
   disableNfsProvisioner: true
+  resources: {}
+  image: library/mongo:4.4.1
 
 #etcd chart overrides for k8splugin
 etcd:

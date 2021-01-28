@@ -8,15 +8,15 @@ dependencies:
   - name: etcd
     version: ~7.x-0
     repository: '@local'
+  - name: mongo
+    version: ~7.x-0
+    repository: '@local'
   - name: multicloud-emco-common
     version: ~0.x-0
     repository: 'file://components/multicloud-emco-common'
   - name: multicloud-emco-fluentd
     version: ~1.x-0
     repository: 'file://components/multicloud-emco-fluentd'
-  - name: multicloud-emco-mongo
-    version: ~4.x-0
-    repository: 'file://components/multicloud-emco-mongo'
   - name: multicloud-emco-orchestrator
     version: ~0.x-0
     repository: 'file://components/multicloud-emco-orchestrator'
