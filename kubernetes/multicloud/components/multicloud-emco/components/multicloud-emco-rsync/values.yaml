@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-rsync:latest
+repository: docker.io/integratedcloudnative
+image: emco-rsync:openness-20.12
 pullPolicy: Always
 command: "./rsync"
 args: ""

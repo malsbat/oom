@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-ncm:latest
+repository: docker.io/integratedcloudnative
+image: emco-ncm:openness-20.12
 pullPolicy: Always
 args: ""
 command: "./ncm"

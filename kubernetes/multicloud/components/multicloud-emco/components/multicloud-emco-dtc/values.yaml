@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-dtc:latest
+repository: docker.io/integratedcloudnative
+image: emco-dtc:openness-20.12
 pullPolicy: Always
 command: "./dtc"
 args: ""

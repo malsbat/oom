@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-ovn:latest
+repository: docker.io/integratedcloudnative
+image: emco-ovn:openness-20.12
 pullPolicy: Always
 args: ""
 command: "./ovnaction"

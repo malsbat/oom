@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-orch:latest
+repository: docker.io/integratedcloudnative
+image: emco-orch:openness-20.12
 pullPolicy: Always
 args: ""
 command: "./orchestrator"

@@ -11,8 +11,8 @@ global:
 # Application configuration defaults.
 #################################################################
 # application image
-repository:
-image: emco-gac:latest
+repository: docker.io/integratedcloudnative
+image: emco-gac:openness-20.12
 pullPolicy: Always
 command: "./genericactioncontroller"
 args: ""
