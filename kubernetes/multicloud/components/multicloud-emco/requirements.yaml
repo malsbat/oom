@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2020 Intel Corporation
+
+dependencies:
+  - name: multicloud-emco-common
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-common'
+  - name: multicloud-emco-etcd
+    version: ~3.x-0
+    repository: 'file://components/multicloud-emco-etcd'
+  - name: multicloud-emco-fluentd
+    version: ~1.x-0
+    repository: 'file://components/multicloud-emco-fluentd'
+  - name: multicloud-emco-mongo
+    version: ~4.x-0
+    repository: 'file://components/multicloud-emco-mongo'
+  - name: multicloud-emco-orchestrator
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-orchestrator'
+  - name: multicloud-emco-ncm
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-ncm'
+  - name: multicloud-emco-rsync
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-rsync'
+  - name: multicloud-emco-clm
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-clm'
+  - name: multicloud-emco-ovnaction
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-ovnaction'
+  - name: multicloud-emco-dcm
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-dcm'
+  - name: multicloud-emco-dtc
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-dtc'
+  - name: multicloud-emco-gac
+    version: ~0.x-0
+    repository: 'file://components/multicloud-emco-gac'
+
