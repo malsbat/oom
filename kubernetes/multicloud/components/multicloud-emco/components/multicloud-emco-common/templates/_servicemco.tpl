@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (c) 2020 Intel Corporation
 */}}
-{{- define "common.servicemco" -}}
+{{- define "multicloud-emco.servicemco" -}}
 {{- $common := dict "Values" .Values.common -}}
 {{- $noCommon := omit .Values "common" -}}
 {{- $overrides := dict "Values" $noCommon -}}
