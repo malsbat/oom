@@ -2,6 +2,9 @@
 # Copyright (c) 2020 Intel Corporation
 
 dependencies:
+  - name: common
+    version: ~7.x-0
+    repository: '@local'
   - name: multicloud-emco-common
     version: ~0.x-0
     repository: 'file://components/multicloud-emco-common'

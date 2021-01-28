@@ -5,6 +5,3 @@ dependencies:
   - name: common
     version: ~7.x-0
     repository: '@local'
-  - name: multicloud-emco-common
-    version: ~0.x-0
-    repository: 'file://../multicloud-emco-common'
