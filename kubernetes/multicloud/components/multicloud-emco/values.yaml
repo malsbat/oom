@@ -33,6 +33,9 @@ etcd:
   persistence:
     mountSubPath: emco/etcd/data
     enabled: true
+    volumeReclaimPolicy: Retain
+    accessMode: ReadWriteMany
+  image: etcd-amd64:3.3.17
 
 # Configure resource requests and limits
 flavor: large
