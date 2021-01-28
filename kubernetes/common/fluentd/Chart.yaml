@@ -1,19 +1,18 @@
+# Copyright © 2020 Bitnami, Intel
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 apiVersion: v1
-appVersion: 1.10.2
-description: Fluentd is an open source data collector for unified logging layer
-engine: gotpl
-home: https://www.fluentd.org/
-icon: https://bitnami.com/assets/stacks/fluentd/img/fluentd-stack-110x117.png
-keywords:
-- fluentd
-- logging
-- logs
-- data
-- collector
-maintainers:
-- email: containers@bitnami.com
-  name: Bitnami
-name: multicloud-emco-fluentd
-sources:
-- https://github.com/bitnami/bitnami-docker-fluentd
-version: 1.0.3
+description: ONAP fluentd
+name: fluentd
+version: 7.0.0
