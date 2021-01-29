@@ -15,7 +15,7 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/aggregator-configmap.yaml") . | sha256sum }}
         {{- if .Values.aggregator.podAnnotations }}
-        {{- include "fluentd.tplValue" (dict "value" .Values.aggregator.podAnnotations "context" $) | nindent 8 }}
+        {{- include "common.tplValue" (dict "value" .Values.aggregator.podAnnotations "context" $) | nindent 8 }}
         {{- end }}
     spec:
       {{- include "fluentd.imagePullSecrets" . | nindent 6 }}
@@ -25,13 +25,13 @@ spec:
         fsGroup: {{ .Values.aggregator.securityContext.fsGroup }}
       {{- end }}
       {{- if .Values.aggregator.affinity }}
-      affinity: {{- include "fluentd.tplValue" (dict "value" .Values.aggregator.affinity "context" $) | nindent 8 }}
+      affinity: {{- include "common.tplValue" (dict "value" .Values.aggregator.affinity "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.aggregator.nodeSelector }}
-      nodeSelector: {{- include "fluentd.tplValue" (dict "value" .Values.aggregator.nodeSelector "context" $) | nindent 8 }}
+      nodeSelector: {{- include "common.tplValue" (dict "value" .Values.aggregator.nodeSelector "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.aggregator.tolerations }}
-      tolerations: {{- include "fluentd.tplValue" (dict "value" .Values.aggregator.tolerations "context" $) | nindent 8 }}
+      tolerations: {{- include "common.tplValue" (dict "value" .Values.aggregator.tolerations "context" $) | nindent 8 }}
       {{- end }}
       containers:
         - name: fluentd

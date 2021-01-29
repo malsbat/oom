@@ -13,19 +13,19 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/forwarder-configmap.yaml") . | sha256sum }}
         {{- if .Values.forwarder.podAnnotations }}
-        {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.podAnnotations "context" $) | nindent 8 }}
+        {{- include "common.tplValue" (dict "value" .Values.forwarder.podAnnotations "context" $) | nindent 8 }}
         {{- end }}
     spec:
 {{- include "fluentd.imagePullSecrets" . | nindent 6 }}
       serviceAccountName: {{ template "fluentd.serviceAccountName" . }}
       {{- if .Values.forwarder.affinity }}
-      affinity: {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.affinity "context" $) | nindent 8 }}
+      affinity: {{- include "common.tplValue" (dict "value" .Values.forwarder.affinity "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.forwarder.nodeSelector }}
-      nodeSelector: {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.nodeSelector "context" $) | nindent 8 }}
+      nodeSelector: {{- include "common.tplValue" (dict "value" .Values.forwarder.nodeSelector "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.forwarder.tolerations }}
-      tolerations: {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.tolerations "context" $) | nindent 8 }}
+      tolerations: {{- include "common.tplValue" (dict "value" .Values.forwarder.tolerations "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.forwarder.securityContext.enabled }}
       securityContext:
