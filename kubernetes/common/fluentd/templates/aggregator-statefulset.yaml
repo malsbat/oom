@@ -10,7 +10,7 @@ spec:
   updateStrategy: {{- toYaml .Values.aggregator.updateStrategy | nindent 4 }}
   template:
     metadata:
-      labels: {{- include "fluentd.labels" . | nindent 8 }}
+      labels: {{- include "common.labels" . | nindent 8 }}
         app.kubernetes.io/component: aggregator
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/aggregator-configmap.yaml") . | sha256sum }}

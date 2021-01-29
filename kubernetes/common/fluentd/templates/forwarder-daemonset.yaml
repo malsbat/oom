@@ -8,7 +8,7 @@ spec:
   updateStrategy: {{- toYaml .Values.forwarder.updateStrategy | nindent 4 }}
   template:
     metadata:
-      labels: {{- include "fluentd.labels" . | nindent 8 }}
+      labels: {{- include "common.labels" . | nindent 8 }}
         app.kubernetes.io/component: forwarder
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/forwarder-configmap.yaml") . | sha256sum }}

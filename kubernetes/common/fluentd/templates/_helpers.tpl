@@ -14,16 +14,6 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{/*
-Common labels
-*/}}
-{{- define "fluentd.labels" -}}
-app.kubernetes.io/name: {{ include "fluentd.name" . }}
-helm.sh/chart: {{ include "fluentd.chart" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end -}}
-
-{{/*
 Labels to use on daemonset.spec.selector.matchLabels, statefulset.spec.selector.matchLabels and svc.spec.selector
 */}}
 {{- define "fluentd.matchLabels" -}}
