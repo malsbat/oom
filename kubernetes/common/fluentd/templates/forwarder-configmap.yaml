@@ -77,7 +77,7 @@ data:
     # Forward all logs to the aggregators
     <match **>
       @type forward
-      {{- $fullName := (include "fluentd.fullname" .) }}
+      {{- $fullName := (include "common.fullname" .) }}
       {{- $global := . }}
       {{- $domain := default "cluster.local" .Values.clusterDomain }}
       {{- $port := .Values.aggregator.port | int }}

@@ -5,7 +5,7 @@ kind: StatefulSet
 metadata:  {{- include "common.resourceMetadata" (dict "labels" $labels "dot" . ) | nindent 2 }}
 spec:
   selector: {{- include "common.selectors" (dict "matchLabels" $labels "dot" . ) | nindent 4 }}
-  serviceName: {{ include "fluentd.fullname" . }}-headless
+  serviceName: {{ include "common.fullname" . }}-headless
   replicas: {{ .Values.aggregator.replicaCount }}
   updateStrategy: {{- toYaml .Values.aggregator.updateStrategy | nindent 4 }}
   template:
@@ -88,7 +88,7 @@ spec:
             - name: fluentd-config
               mountPath: /opt/bitnami/fluentd/conf
             {{- if .Values.aggregator.persistence.enabled }}
-            - name: {{ include "fluentd.fullname" . }}-buffer
+            - name: {{ include "common.fullname" . }}-buffer
               mountPath: /opt/bitnami/fluentd/logs/buffers
             {{- else }}
             - name: buffer
@@ -120,7 +120,7 @@ spec:
   {{- if .Values.aggregator.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
-        name: {{ include "fluentd.fullname" . }}-buffer
+        name: {{ include "common.fullname" . }}-buffer
       spec:
         accessModes: [{{ .Values.aggregator.persistence.accessMode }}]
         storageClassName: {{ .Values.aggregator.persistence.storageClass }}
