@@ -1,13 +1,10 @@
 {{- if and .Values.forwarder.enabled .Values.forwarder.service.ports }}
 apiVersion: v1
 kind: Service
-metadata:
-  name: {{ include "fluentd.fullname" . }}-forwarder
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
-    app.kubernetes.io/component: forwarder
-  {{- if .Values.forwarder.service.annotations }}
-  annotations: {{- include "fluentd.tplValue" (dict "value" .Values.forwarder.service.annotations "context" $) | nindent 4 }}
-  {{- end }}
+{{ $suffix := "forwarder" }}
+{{ $labels := (dict "app.kubernetes.io/component" $suffix) -}}
+{{ $annotations := default (dict) .Values.forwarder.service.annotations -}}
+metadata:  {{- include "common.resourceMetadata" (dict "suffix" $suffix "labels" $labels "annotations" $annotations "dot" . ) | nindent 2 }}
 spec:
   type: {{ .Values.forwarder.service.type }}
   {{- if and .Values.forwarder.service.loadBalancerIP (eq .Values.forwarder.service.type "LoadBalancer") }}
@@ -27,6 +24,5 @@ spec:
     - name: {{ $key }}
       {{ toYaml $value | nindent 6 }}
   {{- end }}
-  selector: {{ include "fluentd.matchLabels" . | nindent 4 }}
-    app.kubernetes.io/component: forwarder
+  selector: {{- include "common.matchLabels" (dict "matchLabels" $labels "dot" . ) | nindent 4 }}
 {{- end }}

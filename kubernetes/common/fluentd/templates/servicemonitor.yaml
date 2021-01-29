@@ -11,8 +11,7 @@ metadata:
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
-  selector:
-    matchLabels: {{- include "fluentd.matchLabels" . | nindent 6 }}
+  selector: {{- include "common.selectors" . | nindent 4 }}
   endpoints:
     - port: metrics
       path: "/metrics"

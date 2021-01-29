@@ -1,14 +1,10 @@
 {{- if .Values.aggregator.enabled -}}
 apiVersion: apps/v1
 kind: StatefulSet
-metadata:
-  name: {{ include "fluentd.fullname" . }}
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
-    app.kubernetes.io/component: aggregator
+{{ $labels := (dict "app.kubernetes.io/component" "aggregator") -}}
+metadata:  {{- include "common.resourceMetadata" (dict "labels" $labels "dot" . ) | nindent 2 }}
 spec:
-  selector:
-    matchLabels: {{- include "fluentd.matchLabels" . | nindent 6 }}
-      app.kubernetes.io/component: aggregator
+  selector: {{- include "common.selectors" (dict "matchLabels" $labels "dot" . ) | nindent 4 }}
   serviceName: {{ include "fluentd.fullname" . }}-headless
   replicas: {{ .Values.aggregator.replicaCount }}
   updateStrategy: {{- toYaml .Values.aggregator.updateStrategy | nindent 4 }}

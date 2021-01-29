@@ -1,10 +1,9 @@
 {{- if and .Values.forwarder.enabled (not .Values.forwarder.configMap) -}}
 apiVersion: v1
 kind: ConfigMap
-metadata:
-  name: {{ include "fluentd.fullname" . }}-forwarder-cm
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
-    app.kubernetes.io/component: forwarder
+{{ $suffix := "forwarder-cm" -}}
+{{ $labels := (dict "app.kubernetes.io/component" "forwarder") -}}
+metadata:  {{- include "common.resourceMetadata" (dict "suffix" $suffix "labels" $labels "dot" . ) | nindent 2 }}
 data:
   fluentd.conf: |
     {{- if .Values.metrics.enabled -}}

@@ -1,9 +1,8 @@
 {{- if and (not .Values.tls.existingSecret) ( .Values.tls.enabled) }}
 apiVersion: v1
 kind: Secret
-metadata:
-  name: {{ include "fluentd.fullname" . }}-tls
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
+{{ $suffix := "tls" -}}
+metadata:  {{- include "common.resourceMetadata" (dict "suffix" $suffix "dot" . ) | nindent 2 }}
 type: kubernetes.io/tls
 data:
   tls.crt: {{ required "A valid .Values.tls.certificate entry required!" .Values.tls.certificate | b64enc }}

@@ -1,13 +1,10 @@
 {{- if and .Values.aggregator.enabled .Values.aggregator.service.ports }}
 apiVersion: v1
 kind: Service
-metadata:
-  name: {{ include "fluentd.fullname" . }}-aggregator
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
-    app.kubernetes.io/component: aggregator
-  {{- if .Values.aggregator.service.annotations }}
-  annotations: {{- include "fluentd.tplValue" (dict "value" .Values.aggregator.service.annotations "context" $) | nindent 4 }}
-  {{- end }}
+{{ $suffix := "aggregator" -}}
+{{ $labels := (dict "app.kubernetes.io/component" $suffix) -}}
+{{ $annotations := default (dict) .Values.aggregator.service.annotations -}}
+metadata:  {{- include "common.resourceMetadata" (dict "suffix" $suffix "labels" $labels "annotations" $annotations "dot" . ) | nindent 2 }}
 spec:
   type: {{ .Values.aggregator.service.type }}
   {{- if and .Values.aggregator.service.loadBalancerIP (eq .Values.aggregator.service.type "LoadBalancer") }}
@@ -27,6 +24,5 @@ spec:
     - name: {{ $key }}
       {{ toYaml $value | nindent 6 }}
   {{- end }}
-  selector: {{ include "fluentd.matchLabels" . | nindent 4 }}
-    app.kubernetes.io/component: aggregator
+  selector: {{- include "common.matchLabels" (dict "matchLabels" $labels "dot" . ) | nindent 4 }}
 {{- end }}

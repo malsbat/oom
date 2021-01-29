@@ -1,14 +1,10 @@
 {{- if .Values.forwarder.enabled }}
 apiVersion: apps/v1
 kind: DaemonSet
-metadata:
-  name: {{ include "fluentd.fullname" . }}
-  labels: {{- include "fluentd.labels" . | nindent 4 }}
-    app.kubernetes.io/component: forwarder
+{{ $labels := (dict "app.kubernetes.io/component" "forwarder") -}}
+metadata:  {{- include "common.resourceMetadata" (dict "labels" $labels "dot" . ) | nindent 2 }}
 spec:
-  selector:
-    matchLabels: {{- include "fluentd.matchLabels" . | nindent 6 }}
-      app.kubernetes.io/component: forwarder
+  selector: {{- include "common.selectors" (dict "matchLabels" $labels "dot" . ) | nindent 4 }}
   updateStrategy: {{- toYaml .Values.forwarder.updateStrategy | nindent 4 }}
   template:
     metadata:

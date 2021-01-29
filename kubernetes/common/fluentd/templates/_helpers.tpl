@@ -159,7 +159,7 @@ Get the aggregator configmap name.
 {{- if .Values.aggregator.configMap -}}
     {{- printf "%s" (tpl .Values.aggregator.configMap $) -}}
 {{- else -}}
-    {{- printf "%s-aggregator-cm" (include "fluentd.fullname" . ) -}}
+    {{- printf "%s-aggregator-cm" (include "common.fullname" . ) -}}
 {{- end -}}
 {{- end -}}
 
