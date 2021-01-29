@@ -9,5 +9,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ template "fluentd.serviceAccountName" . }}
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "common.namespace" . }}
 {{- end }}
