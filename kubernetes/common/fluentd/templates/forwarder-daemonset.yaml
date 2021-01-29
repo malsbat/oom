@@ -16,7 +16,8 @@ spec:
         {{- include "common.tplValue" (dict "value" .Values.forwarder.podAnnotations "context" $) | nindent 8 }}
         {{- end }}
     spec:
-{{- include "fluentd.imagePullSecrets" . | nindent 6 }}
+      imagePullSecrets:
+      - name: "{{ include "common.namespace" . }}-docker-registry-key"
       serviceAccountName: {{ template "fluentd.serviceAccountName" . }}
       {{- if .Values.forwarder.affinity }}
       affinity: {{- include "common.tplValue" (dict "value" .Values.forwarder.affinity "context" $) | nindent 8 }}
@@ -34,8 +35,8 @@ spec:
       {{- end }}
       containers:
         - name: fluentd
-          image: {{ include "fluentd.image" . }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: {{ include "repositoryGenerator.dockerHubRepository" . }}/{{ .Values.image }}
+          imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
           env:
             - name: FLUENTD_CONF
               value: {{ .Values.forwarder.configFile }}
