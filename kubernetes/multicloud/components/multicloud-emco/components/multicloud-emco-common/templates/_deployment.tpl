@@ -18,7 +18,7 @@ spec:
     metadata: {{- include "common.templateMetadata" . | nindent 6 }}
     spec:
       containers:
-      - image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+      - image: {{ include "repositoryGenerator.repository" . }}/{{ .Values.image }}
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         name: {{ include "common.name" . }}
         command: [{{ .Values.command }}]
