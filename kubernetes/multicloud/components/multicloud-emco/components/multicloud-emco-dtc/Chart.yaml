@@ -4,4 +4,4 @@
 apiVersion: v1
 description: Distributed Traffic Controller
 name: multicloud-emco-dtc
-version: 0.1.0
+version: 7.0.0

@@ -4,4 +4,4 @@
 apiVersion: v1
 description: Generic Action Controller
 name: multicloud-emco-gac
-version: 0.1.0
+version: 7.0.0

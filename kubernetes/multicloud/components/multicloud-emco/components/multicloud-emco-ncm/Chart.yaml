@@ -4,4 +4,4 @@
 apiVersion: v1
 description: Network Configuration Manager
 name: multicloud-emco-ncm
-version: 0.1.0
+version: 7.0.0
