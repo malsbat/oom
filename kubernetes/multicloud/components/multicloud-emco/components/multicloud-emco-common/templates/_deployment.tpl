@@ -10,25 +10,12 @@
 {{- with merge $noValues $overrides $common -}}
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: {{ include "common.fullname" . }}
-  namespace: {{ include "common.namespace" . }}
-  labels:
-    app: {{ include "common.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+metadata: {{- include "common.resourceMetadata" . | nindent 2 }}
 spec:
-  selector:
-    matchLabels:
-      app: {{ include "common.name" . }}
-      release: {{ .Release.Name }}
+  selector: {{- include "common.selectors" . | nindent 4 }}
   replicas: {{ .Values.replicaCount }}
   template:
-    metadata:
-      labels:
-        app: {{ include "common.name" . }}
-        release: {{ .Release.Name }}
+    metadata: {{- include "common.templateMetadata" . | nindent 6 }}
     spec:
       containers:
       - image: "{{ include "common.repository" . }}/{{ .Values.image }}"

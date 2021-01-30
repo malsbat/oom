@@ -13,11 +13,7 @@ kind: Service
 metadata:
   name: {{ include "common.servicename" . }}
   namespace: {{ include "common.namespace" . }}
-  labels:
-    app: {{ include "common.fullname" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+  labels: {{ include "common.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -30,8 +26,6 @@ spec:
     targetPort: {{ .Values.service.internalPort }}
     {{- end}}
     protocol: TCP
-  selector:
-    app: {{ include "common.name" . }}
-    release: {{ .Release.Name }}
+  selector: {{ include "common.matchLabels" . | nindent 4 }}
 {{- end -}}
 {{- end -}}
